@@ -176,6 +176,7 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabel4.setText("Forma de pagamento");
 
         jComboBox2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(255, 51, 51));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a forma de pagamento", "Dinheiro", "Crédito", "Debito" }));
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
