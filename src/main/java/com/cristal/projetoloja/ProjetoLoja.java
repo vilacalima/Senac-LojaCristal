@@ -12,7 +12,8 @@ package com.cristal.projetoloja;
 public class ProjetoLoja {
 
     public static void main(String[] args) {
-        System.out.println("Teste Robson");
+//        TelaVenda telavenda = new TelaVenda();
+//        telavenda.setVisible(true);
     }
     
 }
