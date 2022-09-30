@@ -383,9 +383,13 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxIDVendedorActionPerformed
 
     private void btnCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVendaActionPerformed
-        TelaCancelamentoPedido cancelaPedido = new TelaCancelamentoPedido();
-        cancelaPedido.setVisible(true);
-//        JOptionPane.showMessageDialog(null, "fechar pagina", "cancelar venda", JOptionPane.YES_NO_OPTION);
+//        TelaCancelamentoPedido cancelaPedido = new TelaCancelamentoPedido();
+//        cancelaPedido.setVisible(true);
+				if(JOptionPane.showConfirmDialog(null, "Deseja realmente cancelar a venda?", "Cancelar Venda", JOptionPane.YES_NO_OPTION) == 0){
+					setVisible(false);
+					dispose();
+				}
+
     }//GEN-LAST:event_btnCancelarVendaActionPerformed
 
     /**
