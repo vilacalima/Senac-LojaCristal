@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.projetoloja;
+package com.cristal.projetoloja;
 
 /**
  *
@@ -26,17 +26,25 @@ public class TelaCancelamentoPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnCancelaEnceramento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setBackground(new java.awt.Color(242, 242, 242));
-        jButton1.setText("Sim");
+        btnLimpar.setBackground(new java.awt.Color(242, 242, 242));
+        btnLimpar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnLimpar.setText("Sim");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Tem certeza que deseja cancelar a venda?");
 
+        btnCancelaEnceramento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCancelaEnceramento.setText("Não");
         btnCancelaEnceramento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,8 +65,8 @@ public class TelaCancelamentoPedido extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addComponent(btnCancelaEnceramento)
                         .addGap(57, 57, 57)
-                        .addComponent(jButton1)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                        .addComponent(btnLimpar)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,8 +76,8 @@ public class TelaCancelamentoPedido extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelaEnceramento)
-                    .addComponent(jButton1))
-                .addContainerGap(69, Short.MAX_VALUE))
+                    .addComponent(btnLimpar))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +86,10 @@ public class TelaCancelamentoPedido extends javax.swing.JFrame {
     private void btnCancelaEnceramentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelaEnceramentoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelaEnceramentoActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+    
+    }//GEN-LAST:event_btnLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +129,7 @@ public class TelaCancelamentoPedido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelaEnceramento;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
