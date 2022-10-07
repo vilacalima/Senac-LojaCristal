@@ -17,6 +17,7 @@ public class TelaVenda extends javax.swing.JFrame {
      */
     public TelaVenda() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
