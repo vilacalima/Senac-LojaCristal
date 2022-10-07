@@ -14,6 +14,7 @@ public class ProjetoLoja {
     public static void main(String[] args) {
 //        TelaVenda telavenda = new TelaVenda();
 //        telavenda.setVisible(true);
+System.out.println("teste");
     }
     
 }
