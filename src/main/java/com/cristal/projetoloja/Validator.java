@@ -17,9 +17,12 @@ public class Validator {
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ((c != ','))) {
             evt.consume();
-
         }
         //FAZER COM QUE O CAMPO ACEITE SOMENTE NUMEROS E VIRGULA
+    }
+    
+    public void validaCPF(){
+        
     }
 
 }
