@@ -430,13 +430,14 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxIDVendedorActionPerformed
 
     private void txtValorPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorPagoKeyTyped
-        char c = evt.getKeyChar();
+          Validator validador = new Validator();
+          validador.validaMonetarioTxtBox(evt);
         
-        if( ( (c<'0') || (c>'9') ) && (c !=KeyEvent.VK_BACK_SPACE) && ((c!=',')) )
-        {
-            evt.consume();
-//FAZER COM QUE O CAMPO ACEITE SOMENTE NUMEROS E VIGULA
-        }
+//        if( ( (c<'0') || (c>'9') ) && (c !=KeyEvent.VK_BACK_SPACE) && ((c!=',')) )
+//        {
+//            evt.consume();
+////FAZER COM QUE O CAMPO ACEITE SOMENTE NUMEROS E VIGULA
+//        }
     }//GEN-LAST:event_txtValorPagoKeyTyped
 
     /**
