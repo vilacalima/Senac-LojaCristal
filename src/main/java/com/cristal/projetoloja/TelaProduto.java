@@ -196,6 +196,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Procurar.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
