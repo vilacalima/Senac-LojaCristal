@@ -141,7 +141,7 @@
                                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                   <Component id="btnAlterar" min="-2" pref="109" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnSair" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Component id="btnHome" min="-2" pref="109" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -187,7 +187,7 @@
                       <Component id="btnCancelar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnExcluir" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnAlterar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="btnSair" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="btnHome" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
@@ -277,7 +277,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnIncluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Incluir"/>
+            <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -376,11 +376,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSair">
+        <Component class="javax.swing.JButton" name="btnHome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="text" type="java.lang.String" value="Home"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtValor">
           <Events>

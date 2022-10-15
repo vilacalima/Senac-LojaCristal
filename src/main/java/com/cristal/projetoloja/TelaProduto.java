@@ -19,7 +19,7 @@ public class TelaProduto extends javax.swing.JFrame {
      */
     public TelaProduto() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+       
     }
 
     /**
@@ -56,7 +56,7 @@ public class TelaProduto extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         txtValor = new javax.swing.JFormattedTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -183,7 +183,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
-        btnIncluir.setText("Incluir");
+        btnIncluir.setText("Salvar");
 
         jLabel8.setText("Pesquisar:");
 
@@ -234,8 +234,18 @@ public class TelaProduto extends javax.swing.JFrame {
         btnExcluir.setText("Excluir");
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
-        btnSair.setText("Sair");
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         txtValor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -315,7 +325,7 @@ public class TelaProduto extends javax.swing.JFrame {
                                 .addGap(58, 58, 58)
                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -352,7 +362,7 @@ public class TelaProduto extends javax.swing.JFrame {
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
@@ -509,7 +519,7 @@ public class TelaProduto extends javax.swing.JFrame {
         if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
  {
     evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo TAMANHO permite somente números!");
+    JOptionPane.showMessageDialog(null,"Campo VALOR permite somente números!");
  }
     }//GEN-LAST:event_txtValorKeyTyped
 
@@ -524,6 +534,16 @@ public class TelaProduto extends javax.swing.JFrame {
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        TelaInicial telaInicial = new TelaInicial();
+        telaInicial.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -564,9 +584,9 @@ public class TelaProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
