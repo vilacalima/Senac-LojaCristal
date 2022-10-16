@@ -234,6 +234,11 @@ public class TelaVenda extends javax.swing.JFrame {
         txtValorPago.setForeground(new java.awt.Color(255, 0, 0));
         txtValorPago.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
         txtValorPago.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        txtValorPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorPagoActionPerformed(evt);
+            }
+        });
         txtValorPago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtValorPagoKeyTyped(evt);
@@ -449,7 +454,7 @@ public class TelaVenda extends javax.swing.JFrame {
 
     private void txtValorPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorPagoKeyTyped
           Validator validador = new Validator();
-          validador.validaMonetarioTxtBox(evt);
+          validador.validaMonetarioTxtBox(evt, "Valor Pago");
         
 //        if( ( (c<'0') || (c>'9') ) && (c !=KeyEvent.VK_BACK_SPACE) && ((c!=',')) )
 //        {
@@ -471,6 +476,10 @@ public class TelaVenda extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void txtValorPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorPagoActionPerformed
 
     /**
      * @param args the command line arguments

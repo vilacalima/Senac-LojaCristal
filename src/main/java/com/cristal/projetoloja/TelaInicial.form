@@ -113,6 +113,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnVenda">
               <Properties>
+                <Property name="mnemonic" type="int" value="78"/>
                 <Property name="text" type="java.lang.String" value="Nova venda"/>
               </Properties>
               <Events>
@@ -122,6 +123,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnClientes">
               <Properties>
+                <Property name="mnemonic" type="int" value="67"/>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
               </Properties>
               <Events>
@@ -130,6 +132,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnProduto">
               <Properties>
+                <Property name="mnemonic" type="int" value="80"/>
                 <Property name="text" type="java.lang.String" value="Produto"/>
               </Properties>
               <Events>
@@ -138,6 +141,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnRelatorio">
               <Properties>
+                <Property name="mnemonic" type="int" value="82"/>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
               </Properties>
               <Events>
