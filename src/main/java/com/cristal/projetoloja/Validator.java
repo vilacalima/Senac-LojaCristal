@@ -6,6 +6,7 @@ package com.cristal.projetoloja;
 
 import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +14,12 @@ import java.util.InputMismatchException;
  */
 public class Validator {
 
-    public void validaMonetarioTxtBox(java.awt.event.KeyEvent evt) {
+    public void validaMonetarioTxtBox(java.awt.event.KeyEvent evt, String campo) {
         char c = evt.getKeyChar();
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && ((c != ','))) {
             evt.consume();
+            JOptionPane.showMessageDialog(null,"Campo " + campo + " permite somente números!");
         }
         //FAZER COM QUE O CAMPO ACEITE SOMENTE NUMEROS E VIRGULA
     }

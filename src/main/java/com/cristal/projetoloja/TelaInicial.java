@@ -40,6 +40,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo300x300.png"))); // NOI18N
 
+        btnVenda.setMnemonic('N');
         btnVenda.setText("Nova venda");
         btnVenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -52,6 +53,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnClientes.setMnemonic('C');
         btnClientes.setText("Clientes");
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnProduto.setMnemonic('P');
         btnProduto.setText("Produto");
         btnProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +69,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnRelatorio.setMnemonic('R');
         btnRelatorio.setText("Relatório");
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

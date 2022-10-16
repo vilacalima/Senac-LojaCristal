@@ -241,7 +241,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
-        btnHome.setText("Home");
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
@@ -326,7 +326,7 @@ public class TelaProduto extends javax.swing.JFrame {
                                 .addGap(58, 58, 58)
                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnHome)))
                         .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -389,13 +389,8 @@ public class TelaProduto extends javax.swing.JFrame {
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
        //Permitir somente caracteres numéricos
- char c = evt.getKeyChar();
-        
- if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-     JOptionPane.showMessageDialog(null,"Campo CODIGO permite somente números!");
- }
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Código");
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
@@ -413,23 +408,13 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorKeyTyped
 
     private void txtTamanhoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTamanhoKeyTyped
-        char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo TAMANHO permite somente números!");
- }
-
-
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Tamanho");
     }//GEN-LAST:event_txtTamanhoKeyTyped
 
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantidadeKeyTyped
-       char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo QUANTIDADE permite somente números!");
- }
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Quantidade");
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
     private void txtFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFornecedorKeyTyped
@@ -516,12 +501,8 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarMouseExited
 
     private void txtValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorKeyTyped
-       char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo VALOR permite somente números!");
- }
+       Validator validador = new Validator();
+       validador.validaMonetarioTxtBox(evt, "Valor");
     }//GEN-LAST:event_txtValorKeyTyped
 
     private void txtValorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorMouseEntered

@@ -141,7 +141,7 @@
                                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                   <Component id="btnAlterar" min="-2" pref="109" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnHome" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Component id="btnHome" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -385,7 +385,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnHome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Home"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/home.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomeActionPerformed"/>
