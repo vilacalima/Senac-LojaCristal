@@ -19,7 +19,7 @@ public class TelaProduto extends javax.swing.JFrame {
      */
     public TelaProduto() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+       
     }
 
     /**
@@ -56,7 +56,7 @@ public class TelaProduto extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         txtValor = new javax.swing.JFormattedTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -183,7 +183,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
-        btnIncluir.setText("Incluir");
+        btnIncluir.setText("Salvar");
 
         jLabel8.setText("Pesquisar:");
 
@@ -196,6 +196,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Procurar.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
@@ -234,8 +235,18 @@ public class TelaProduto extends javax.swing.JFrame {
         btnExcluir.setText("Excluir");
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
-        btnSair.setText("Sair");
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         txtValor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -315,7 +326,7 @@ public class TelaProduto extends javax.swing.JFrame {
                                 .addGap(58, 58, 58)
                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnHome)))
                         .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -352,7 +363,7 @@ public class TelaProduto extends javax.swing.JFrame {
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
@@ -378,13 +389,8 @@ public class TelaProduto extends javax.swing.JFrame {
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
        //Permitir somente caracteres numéricos
- char c = evt.getKeyChar();
-        
- if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-     JOptionPane.showMessageDialog(null,"Campo CODIGO permite somente números!");
- }
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Código");
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
@@ -402,23 +408,13 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorKeyTyped
 
     private void txtTamanhoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTamanhoKeyTyped
-        char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo TAMANHO permite somente números!");
- }
-
-
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Tamanho");
     }//GEN-LAST:event_txtTamanhoKeyTyped
 
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantidadeKeyTyped
-       char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo QUANTIDADE permite somente números!");
- }
+        Validator validador = new Validator();
+        validador.validaMonetarioTxtBox(evt, "Quantidade");
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
     private void txtFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFornecedorKeyTyped
@@ -505,12 +501,8 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarMouseExited
 
     private void txtValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorKeyTyped
-       char c = evt.getKeyChar();
-        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE))
- {
-    evt.consume(); 
-    JOptionPane.showMessageDialog(null,"Campo TAMANHO permite somente números!");
- }
+       Validator validador = new Validator();
+       validador.validaMonetarioTxtBox(evt, "Valor");
     }//GEN-LAST:event_txtValorKeyTyped
 
     private void txtValorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorMouseEntered
@@ -524,6 +516,16 @@ public class TelaProduto extends javax.swing.JFrame {
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        TelaInicial telaInicial = new TelaInicial();
+        telaInicial.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -564,9 +566,9 @@ public class TelaProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
