@@ -390,7 +390,9 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        TelaInicial telaInicial = new TelaInicial();
+        telaInicial.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

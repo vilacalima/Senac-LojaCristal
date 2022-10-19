@@ -86,6 +86,11 @@ public class TelaProduto extends javax.swing.JFrame {
                 txtCodigoMouseExited(evt);
             }
         });
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
@@ -140,6 +145,11 @@ public class TelaProduto extends javax.swing.JFrame {
                 txtTamanhoMouseExited(evt);
             }
         });
+        txtTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTamanhoActionPerformed(evt);
+            }
+        });
         txtTamanho.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTamanhoKeyTyped(evt);
@@ -156,6 +166,11 @@ public class TelaProduto extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtQuantidadeMouseExited(evt);
+            }
+        });
+        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeActionPerformed(evt);
             }
         });
         txtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -420,10 +435,10 @@ public class TelaProduto extends javax.swing.JFrame {
     private void txtFornecedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFornecedorKeyTyped
          txtFornecedor.setText(this.txtFornecedor.getText().toUpperCase());
         if(txtFornecedor.getText().length()>=10)
-{
-    evt.consume();
-    JOptionPane.showMessageDialog(null,"Máximo de 10 caracteres atingido!");
-}
+        {
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"Máximo de 10 caracteres atingido!");
+        }
     }//GEN-LAST:event_txtFornecedorKeyTyped
 
     private void txtFornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFornecedorKeyReleased
@@ -526,6 +541,18 @@ public class TelaProduto extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTamanhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTamanhoActionPerformed
+
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments
