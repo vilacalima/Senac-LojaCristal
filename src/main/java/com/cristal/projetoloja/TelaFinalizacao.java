@@ -15,6 +15,7 @@ public class TelaFinalizacao extends javax.swing.JFrame {
      */
     public TelaFinalizacao() {
         initComponents();
+        
     }
 
     /**

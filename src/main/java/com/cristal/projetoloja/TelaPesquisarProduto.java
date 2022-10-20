@@ -134,7 +134,7 @@ public class TelaPesquisarProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodCalcadoKeyTyped(java.awt.event.KeyEvent evt) {                                              
-        Validator validador = new Validator();
+        Validador validador = new Validador();
         validador.validaMonetarioTxtBox(evt, "Código do calçado");
     }  
     

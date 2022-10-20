@@ -13,7 +13,7 @@ import javax.swing.JTextField;
  *
  * @author robso
  */
-public class Validator {
+public class Validador {
 
     public void validaMonetarioTxtBox(java.awt.event.KeyEvent evt, String campo) {
         char c = evt.getKeyChar();

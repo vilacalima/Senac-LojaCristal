@@ -238,12 +238,12 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     private void txtDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDataKeyTyped
         //Permitir somente caracteres numéricos
-        Validator validador = new Validator();
+        Validador validador = new Validador();
         validador.validaMonetarioTxtBox(evt, " data ");
     }//GEN-LAST:event_txtDataKeyTyped
 
     private void jFormattedTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField2KeyTyped
-        Validator validador = new Validator();
+        Validador validador = new Validador();
         validador.validaMonetarioTxtBox(evt, " data ");
     }//GEN-LAST:event_jFormattedTextField2KeyTyped
 

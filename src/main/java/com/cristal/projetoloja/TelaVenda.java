@@ -60,6 +60,7 @@ public class TelaVenda extends javax.swing.JFrame {
         txtNumeroVenda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cristal - Venda");
         setIconImages(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -198,6 +199,7 @@ public class TelaVenda extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lixeira.png"))); // NOI18N
         jButton3.setText("Excluir Item");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +256,7 @@ public class TelaVenda extends javax.swing.JFrame {
         });
 
         btnCancelarVenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCancelarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/X.png"))); // NOI18N
         btnCancelarVenda.setText("Cancelar Venda");
         btnCancelarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -443,7 +446,7 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxIDVendedorActionPerformed
 
     private void txtValorPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorPagoKeyTyped
-          Validator validador = new Validator();
+          Validador validador = new Validador();
           validador.validaMonetarioTxtBox(evt, "Valor Pago");
     }//GEN-LAST:event_txtValorPagoKeyTyped
 
