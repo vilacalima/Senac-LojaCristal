@@ -7,6 +7,7 @@ package com.cristal.projetoloja;
 import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,5 +25,14 @@ public class Validator {
         
     }
     
+    public void validaPalavra(java.awt.event.KeyEvent evt, JTextField texto, int numero){
+        if(texto.getText().length()>=numero)
+        {
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"Máximo de " + numero + " caracteres atingido!");
+
+
+        }
+    }
 
 }
