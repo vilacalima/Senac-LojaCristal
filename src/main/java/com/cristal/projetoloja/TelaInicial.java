@@ -36,6 +36,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setToolTipText("CRISTAL");
+
         jPanel2.setToolTipText("CRISTAL Feminine Shoes");
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo300x300.png"))); // NOI18N

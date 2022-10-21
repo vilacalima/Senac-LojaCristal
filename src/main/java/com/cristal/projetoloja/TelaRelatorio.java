@@ -42,8 +42,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         txtData = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Relatório");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CRISTAL Relatório");
 
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
         btnHome.addActionListener(new java.awt.event.ActionListener() {

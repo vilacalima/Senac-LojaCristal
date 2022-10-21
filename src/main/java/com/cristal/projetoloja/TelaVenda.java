@@ -59,8 +59,8 @@ public class TelaVenda extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtNumeroVenda = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cristal - Venda");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CRISTAL Venda");
         setIconImages(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -30,8 +30,6 @@ public class Validador {
         {
             evt.consume();
             JOptionPane.showMessageDialog(null,"Máximo de " + numero + " caracteres atingido!");
-
-
         }
     }
 

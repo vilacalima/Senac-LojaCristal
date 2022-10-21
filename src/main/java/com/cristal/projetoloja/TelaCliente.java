@@ -77,8 +77,8 @@ public class TelaCliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cristal - Cliente");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CRISTAL Cliente");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Cliente"));
 
