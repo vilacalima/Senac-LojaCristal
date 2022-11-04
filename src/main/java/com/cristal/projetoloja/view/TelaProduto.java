@@ -2,11 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.cristal.projetoloja;
+package com.cristal.projetoloja.view;
 
+import com.cirstal.projetoloja.dao.ProdutoDAO;
+import com.cristal.projetoloja.model.Produto;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaProduto extends javax.swing.JFrame {
 
+    Produto objProduto = null;
     /**
      * Creates new form TelaProduto
      */
@@ -243,7 +251,7 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -272,6 +280,11 @@ public class TelaProduto extends javax.swing.JFrame {
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lixeira.png"))); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Editar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -551,7 +564,33 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tblEstoque.getSelectedRow();
+        
+        if(linhaSelecionada > 0){
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            String descricao = txtDescricao.getText();
+            String cor = txtCor.getText();
+            int tamanho = Integer.parseInt(txtTamanho.getText());
+            double valor = Double.parseDouble(txtValor.getText());
+            int quantidade = Integer.parseInt(txtQuantidade.getText());
+            String fornecedor = txtFornecedor.getText();
+            
+            objProduto.setCodigo(codigo);
+            objProduto.setDescricao(descricao);
+            objProduto.setCor(cor);
+            objProduto.setTamanho(tamanho);
+            objProduto.setValor(valor);
+            objProduto.setQuantidade(quantidade);
+            objProduto.setFornecedor(fornecedor);
+            
+            boolean retorno = ProdutoDAO.atualizar(objProduto);
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha na gravação!");
+            }
+            
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
@@ -567,41 +606,87 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        if(txtCodigo.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o código do produto");
-            return;
-        }
-        if(txtDescricao.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite a descrição do produto");
-            return;
-        }
-        if(txtCor.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite a cor do produto");
-            return;
-        }
-        if(txtTamanho.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o tamanho do produto");
-            return;
-        }
-        if(txtValor.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o valor do produto");
-            return;
-        }
-        if(txtQuantidade.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite a quantidade");
-            return;
-        }
-        if(txtFornecedor.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o fornecedor");
-            return;
-        }
+        Validador validador =  new Validador();
+        //validador.validaEntradaPalavra(evt, txtCodigo, "o código do produto");
+        validador.validaEntradaPalavra(evt, txtDescricao, "a descrição do produto");
+        validador.validaEntradaPalavra(evt, txtCor, "a cor do produto");
+        validador.validaEntradaPalavra(evt, txtTamanho, "o tamanho do produto");
+        validador.validaEntradaPalavra(evt, txtValor, "o valor do produto");
+        validador.validaEntradaPalavra(evt, txtQuantidade, "a quantidade");
+        validador.validaEntradaPalavra(evt, txtFornecedor, "o fornecedor");
+        try{
+            if(this.objProduto == null){
+            String descricao = txtDescricao.getText();
+            String cor = txtCor.getText();
+            int tamanho = Integer.parseInt(txtTamanho.getText());
+            double valor = Double.parseDouble(txtValor.getText());
+            int quantidade = Integer.parseInt(txtQuantidade.getText());
+            String fornecedor = txtFornecedor.getText();
+
+            objProduto = new Produto(descricao, cor, tamanho, valor, quantidade, fornecedor);
+            boolean retorno = ProdutoDAO.salvar(objProduto);
+
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha na gravação!");
+            }
+
+            } else{
+                String descricao = txtDescricao.getText();
+                String cor = txtCor.getText();
+                int tamanho = Integer.parseInt(txtTamanho.getText());
+                double valor = Double.parseDouble(txtValor.getText());
+                int quantidade = Integer.parseInt(txtQuantidade.getText());
+                String fornecedor = txtFornecedor.getText();
+
+                objProduto.setDescricao(descricao);
+                objProduto.setCor(cor);
+                objProduto.setTamanho(tamanho);
+                objProduto.setValor(valor);
+                objProduto.setQuantidade(quantidade);
+                objProduto.setFornecedor(fornecedor);
+
+                boolean retorno = ProdutoDAO.atualizar(objProduto);
+                if(retorno){
+                    JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
+                }else{
+                    JOptionPane.showMessageDialog(this,"Falha na gravação!");
+                }
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(TelaProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        if(txtPesquisar.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o código do produto");
-            return;
+        Validador validador = new Validador();
+        validador.validaEntradaPalavra(evt, txtPesquisar, "o código do produto");
+        
+        try{
+            int procurar = Integer.parseInt(txtPesquisar.getText());
+            objProduto = new Produto(procurar);
+            
+             ArrayList<Produto> lista = ProdutoDAO.listar(objProduto);
+             DefaultTableModel modelo = (DefaultTableModel) tblEstoque.getModel();
+             
+             modelo.setRowCount(0);
+             for(Produto item:lista){
+                 modelo.addRow(new String[]{String.valueOf(item.getCodigo()),
+                                            String.valueOf(item.getDescricao()),
+                                            String.valueOf(item.getCor()),
+                                            String.valueOf(item.getTamanho()),
+                                            String.valueOf(item.getValor()),
+                                            String.valueOf(item.getQuantidade()),
+                                            String.valueOf(item.getFornecedor())
+                                            });
+//                 Pode ser que tenha que colocar o id para possibilitar a exclusão
+             }
+             
+        }catch (SQLException ex) {
+            Logger.getLogger(TelaProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -618,6 +703,18 @@ public class TelaProduto extends javax.swing.JFrame {
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linhaSelecionada = tblEstoque.getSelectedRow();
+        int id = Integer.parseInt(tblEstoque.getValueAt(linhaSelecionada, 0).toString());
+        
+        boolean retorno = ProdutoDAO.excluir(id);
+        if(retorno){
+            JOptionPane.showMessageDialog(this, "Produto excluído com sucesso!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Falha na exclusão!");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

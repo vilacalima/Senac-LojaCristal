@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cristal.projetoloja;
+package com.cristal.projetoloja.view;
 
 import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
@@ -30,6 +30,12 @@ public class Validador {
         {
             evt.consume();
             JOptionPane.showMessageDialog(null,"Máximo de " + numero + " caracteres atingido!");
+        }
+    }
+    
+    public void validaEntradaPalavra(java.awt.event.ActionEvent evt, JTextField txt, String texto){
+        if(txt.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
 

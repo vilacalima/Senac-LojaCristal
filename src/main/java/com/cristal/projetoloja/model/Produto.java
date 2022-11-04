@@ -10,71 +10,97 @@ package com.cristal.projetoloja.model;
  */
 public class Produto {
 
+    
     private int codigo;
     private String descricao;
     private String cor;
-    private int Tamanho;
-    private double Valor;
+    private int tamanho;
+    private double valor;
     private int quantidade;
     private String fornecedor;
     
     public Produto(){
     
     }
+    
+    public Produto(int codigo){
+        this.codigo = codigo;
+    }
+    
+    public Produto(String descricao, String cor, int tamanho, double valor, int quantidade, String fornecedor){
+        this.descricao = descricao;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.fornecedor = fornecedor;        
+    }
+    
+    public Produto(int codigo, String descricao, String cor, int tamanho, double valor, int quantidade, String fornecedor){
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.fornecedor = fornecedor;        
+    }
+        
+    
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigo(int novoCodigo) {
+        this.codigo = novoCodigo;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescricao(String novaDescricao) {
+        this.descricao = novaDescricao;
     }
 
     public String getCor() {
         return cor;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setCor(String novaCor) {
+        this.cor = novaCor;
     }
 
     public int getTamanho() {
-        return Tamanho;
+        return tamanho;
     }
 
-    public void setTamanho(int Tamanho) {
-        this.Tamanho = Tamanho;
+    public void setTamanho(int novoTamanho) {
+        this.tamanho = novoTamanho;
     }
 
     public double getValor() {
-        return Valor;
+        return valor;
     }
 
-    public void setValor(double Valor) {
-        this.Valor = Valor;
+    public void setValor(double novoValor) {
+        this.valor = novoValor;
     }
 
     public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int novaQuantidade) {
+        this.quantidade = novaQuantidade;
     }
 
     public String getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setFornecedor(String novoFornecedor) {
+        this.fornecedor = novoFornecedor;
     }
     
 }
