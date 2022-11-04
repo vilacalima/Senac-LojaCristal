@@ -23,8 +23,8 @@ public class Produto {
     
     }
     
-    public Produto(int codigo){
-        this.codigo = codigo;
+    public Produto(String descricao){
+        this.descricao = descricao;
     }
     
     public Produto(String descricao, String cor, int tamanho, double valor, int quantidade, String fornecedor){

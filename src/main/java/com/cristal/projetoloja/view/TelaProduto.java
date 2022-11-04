@@ -664,8 +664,8 @@ public class TelaProduto extends javax.swing.JFrame {
         validador.validaEntradaPalavra(evt, txtPesquisar, "o código do produto");
         
         try{
-            int procurar = Integer.parseInt(txtPesquisar.getText());
-            objProduto = new Produto(procurar);
+            String procurarDescricao = txtPesquisar.getText();
+            objProduto = new Produto(procurarDescricao);
             
              ArrayList<Produto> lista = ProdutoDAO.listar(objProduto);
              DefaultTableModel modelo = (DefaultTableModel) tblEstoque.getModel();
