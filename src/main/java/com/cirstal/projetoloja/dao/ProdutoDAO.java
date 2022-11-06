@@ -57,8 +57,8 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
 
             PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT * FROM produto where cod_produto=?");
-            comandoSQL.setInt(1, obj.getCodigo());
+            conexao.prepareStatement("SELECT * FROM produto where descricao=?");
+            comandoSQL.setString(1, obj.getDescricao());
             
             ResultSet rs = comandoSQL.executeQuery();
 

@@ -68,7 +68,7 @@ public class ClienteDAO {
             
             ResultSet rs = comandoSQL.executeQuery();
             
-            if(rs != null){
+            if(rs!=null){
                 while(rs.next()){
                     Cliente novoCliente = new Cliente();
                     novoCliente.setNome(rs.getString("nome"));
@@ -91,7 +91,7 @@ public class ClienteDAO {
         return lista;
     }
     
-    public static Cliente consultar(String produto){
+    public static Cliente consultarPorCpf(String cpf){
         Cliente lista = new Cliente();
         return lista;
     }
@@ -104,7 +104,7 @@ public class ClienteDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection(url, login, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Cliente SET cod_cliente=?, nome=?, cpf=?, email=?, endereco=?, nro_casa=? celular=? cep=? dataNasc=? WHERE cod_cliente=?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Cliente SET nome=?, cpf=?, email=?, endereco=?, nro_casa=? celular=? cep=? dataNasc=? sexo=? statusCivil=? WHERE cod_cliente=?");
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getCpf());
             comandoSQL.setString(3, obj.getEmail());
@@ -113,7 +113,9 @@ public class ClienteDAO {
             comandoSQL.setString(6, obj.getCelular());
             comandoSQL.setString(7, obj.getCep());
             comandoSQL.setDate(8, new java.sql.Date(obj.getDataNasc().getTime()));
-            comandoSQL.setDouble(9, obj.getCodCliente());
+            comandoSQL.setInt(9, obj.getSexo());
+            comandoSQL.setInt(10, obj.getStatusCivil());
+            comandoSQL.setDouble(11, obj.getCodCliente());
             
             //Inserir os demais argummentos
             

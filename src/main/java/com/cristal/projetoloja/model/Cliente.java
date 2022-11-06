@@ -28,6 +28,7 @@ public class Cliente {
     public Cliente(){
         
     }
+    
     public Cliente(int codCliente){
         this.codCliente = codCliente;
     }
@@ -35,7 +36,7 @@ public class Cliente {
     public Cliente(String cpf){
         this.cpf = cpf;
     }
-    
+  
     public Cliente(String nome, String cpf, Date dataNasc, int sexo, int statusCivil, String email, String celular, String cep, String endereco, int numeroCasa){
         this.nome = nome;
         this.cpf = cpf;

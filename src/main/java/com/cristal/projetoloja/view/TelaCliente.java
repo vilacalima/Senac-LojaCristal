@@ -129,7 +129,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false
@@ -515,10 +515,10 @@ public class TelaCliente extends javax.swing.JFrame {
             String nome = txtNome.getText();
             String cpf = txtCPF.getText();
             String email = txtEmail.getText();
-            String celular = txtCelular.getText();
             String endereco = txtEndereco.getText();
-            Date dataNasc = dateNasc.getDate();
             int numeroCasa = Integer.parseInt(txtNumeroCasa.getText());
+            String celular = txtCelular.getText();
+            Date dataNasc = dateNasc.getDate();
             String cep = txtCEP.getText();
             int sexo = boxSexo.getSelectedIndex();
             int statusCivil = boxStatusCivil.getSelectedIndex();
@@ -560,7 +560,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 for(Cliente item:lista){
                     modelo.addRow(new String[]{String.valueOf(item.getNome()),
                                                 String.valueOf(item.getCpf()),
-                                                String.valueOf(item.getDataNasc(),
+                                                String.valueOf(item.getDataNasc()),
                                                 String.valueOf(item.getSexo()),
                                                 String.valueOf(item.getStatusCivil()),
                                                 String.valueOf(item.getEmail()),
@@ -599,8 +599,8 @@ public class TelaCliente extends javax.swing.JFrame {
                 String cep = txtCEP.getText().replaceAll("[^0-9]", "");
                 int sexo = boxSexo.getSelectedIndex();
                 int statusCivil = boxStatusCivil.getSelectedIndex();
-
-                objCliente =  new Cliente(nome, cpf, email, celular, endereco, dataNasc, numeroCasa, cep, sexo, statusCivil);
+          
+                objCliente =  new Cliente(nome, cpf, dataNasc, sexo, statusCivil, email, celular, cep, endereco, numeroCasa);
                 boolean retorno = ClienteDAO.salvar(objCliente);
 
                 if(retorno){
