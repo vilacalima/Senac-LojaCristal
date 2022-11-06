@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ProdutoDAO {
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
     public static String login = "root";
-    public static String senha = "";
+    public static String senha = "P@$$w0rd";
     
     public static boolean salvar(Produto obj) throws SQLException{
         Connection conexao = null;
@@ -58,7 +58,11 @@ public class ProdutoDAO {
 
             PreparedStatement comandoSQL =
             conexao.prepareStatement("SELECT * FROM produto where descricao=?");
+<<<<<<< HEAD
             comandoSQL.setString(1, obj.getDescricao());
+=======
+            comandoSQL.setInt(1, obj.getCodigo());
+>>>>>>> f9acab21b06204a7b1d644f64177393d71f2c5df
             
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -66,12 +70,12 @@ public class ProdutoDAO {
                 while(rs.next()){
                     Produto novoProduto = new Produto();
                     novoProduto.setCodigo(rs.getInt("cod_produto"));
-                    novoProduto.setCor(rs.getString("cor"));
                     novoProduto.setDescricao(rs.getString("descricao"));
-                    novoProduto.setFornecedor(rs.getString("fornecedor"));
-                    novoProduto.setQuantidade(rs.getInt("quantidade"));
+                    novoProduto.setCor(rs.getString("cor"));
                     novoProduto.setTamanho(rs.getInt("tamanho"));
                     novoProduto.setValor(rs.getDouble("valor"));
+                    novoProduto.setQuantidade(rs.getInt("quantidade"));
+                    novoProduto.setFornecedor(rs.getString("fornecedor"));
                     
                     lista.add(novoProduto);
                 }
