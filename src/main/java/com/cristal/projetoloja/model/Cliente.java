@@ -74,64 +74,64 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpf(String novoCpf) {
+        this.cpf = novoCpf;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String novoEmail) {
+        this.email = novoEmail;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEndereco(String novoEndereco) {
+        this.endereco = novoEndereco;
     }
 
     public int getNumeroCasa() {
         return numeroCasa;
     }
 
-    public void setNumeroCasa(int numeroCasa) {
-        this.numeroCasa = numeroCasa;
+    public void setNumeroCasa(int novoNumeroCasa) {
+        this.numeroCasa = novoNumeroCasa;
     }
 
     public String getCelular() {
         return celular;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setCelular(String novoCelular) {
+        this.celular = novoCelular;
     }
 
     public String getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setCep(String novoCep) {
+        this.cep = novoCep;
     }
 
     public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
+    public void setDataNasc(Date novaDataNasc) {
+        this.dataNasc = novaDataNasc;
     }
     
     public int getSexo(){
@@ -148,7 +148,5 @@ public class Cliente {
     
     public void setStatusCivil(int novoStatusCivil){
         this.statusCivil = novoStatusCivil;
-    }
-    
-    
+    }   
 }

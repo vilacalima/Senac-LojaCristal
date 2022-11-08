@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ProdutoDAO {
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
     public static String login = "root";
-    public static String senha = "P@$$w0rd";
+    public static String senha = ""; //P@$$w0rd
     
     public static boolean salvar(Produto obj) throws SQLException{
         Connection conexao = null;
@@ -58,11 +58,7 @@ public class ProdutoDAO {
 
             PreparedStatement comandoSQL =
             conexao.prepareStatement("SELECT * FROM produto where descricao=?");
-<<<<<<< HEAD
             comandoSQL.setString(1, obj.getDescricao());
-=======
-            comandoSQL.setInt(1, obj.getCodigo());
->>>>>>> f9acab21b06204a7b1d644f64177393d71f2c5df
             
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -132,7 +128,7 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
             
             //Criar o comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM NotaFiscal WHERE idNota=?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM Produto WHERE cod_produto=?");
             comandoSQL.setInt(1,id);            
             
             //Executar o comando
