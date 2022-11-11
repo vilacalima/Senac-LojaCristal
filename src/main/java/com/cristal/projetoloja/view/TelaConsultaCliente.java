@@ -9,6 +9,7 @@ import com.cristal.projetoloja.model.Cliente;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
 
 /**
  *
@@ -126,7 +128,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false
@@ -230,7 +232,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         Cliente obj = new Cliente();
         obj.setNome(tblCliente.getValueAt(linhaSelecionada,0).toString());
         obj.setCpf(tblCliente.getValueAt(linhaSelecionada, 1).toString());
-        //obj.setDataNasc(Date.from((Instant) tblCliente.getValueAt(linhaSelecionada, 2)));
+        obj.setDataNasc((Date) tblCliente.getValueAt(linhaSelecionada, 2));
         obj.setSexo(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,3).toString()));
         obj.setStatusCivil(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada, 4).toString()));
         obj.setEmail(tblCliente.getValueAt(linhaSelecionada, 5).toString());
