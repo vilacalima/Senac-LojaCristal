@@ -9,6 +9,8 @@ import com.cristal.projetoloja.model.Cliente;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -118,20 +120,20 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "DataNasc", "Sexo", "Status Civil", "Email", "Celular", "CEP", "Endereco", "Numero"
+                "CodCliente", "Nome", "CPF", "DataNasc", "Sexo", "Status Civil", "Email", "Celular", "CEP", "Endereco", "Numero"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -230,16 +232,22 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         int linhaSelecionada = tblCliente.getSelectedRow();
         
         Cliente obj = new Cliente();
-        obj.setNome(tblCliente.getValueAt(linhaSelecionada,0).toString());
-        obj.setCpf(tblCliente.getValueAt(linhaSelecionada, 1).toString());
-        obj.setDataNasc((Date) tblCliente.getValueAt(linhaSelecionada, 2));
-        obj.setSexo(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,3).toString()));
-        obj.setStatusCivil(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada, 4).toString()));
-        obj.setEmail(tblCliente.getValueAt(linhaSelecionada, 5).toString());
-        obj.setCelular(tblCliente.getValueAt(linhaSelecionada, 6).toString());
-        obj.setEndereco(tblCliente.getValueAt(linhaSelecionada, 7).toString());        
+        obj.setCodCliente(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,0).toString()));
+        obj.setNome(tblCliente.getValueAt(linhaSelecionada,1).toString());
+        obj.setCpf(tblCliente.getValueAt(linhaSelecionada, 2).toString());
+        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            obj.setDataNasc(formatador.parse(tblCliente.getValueAt(linhaSelecionada,3).toString()));
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaConsultaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        obj.setSexo(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,4).toString()));
+        obj.setStatusCivil(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada, 5).toString()));
+        obj.setEmail(tblCliente.getValueAt(linhaSelecionada, 6).toString());
+        obj.setCelular(tblCliente.getValueAt(linhaSelecionada, 7).toString());
         obj.setCep(tblCliente.getValueAt(linhaSelecionada, 8).toString());
-        obj.setNumeroCasa(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,9).toString()));
+        obj.setEndereco(tblCliente.getValueAt(linhaSelecionada, 9).toString());        
+        obj.setNumeroCasa(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,10).toString()));
 
         TelaCliente novaTela = new TelaCliente(obj);
         novaTela.setVisible(true);
@@ -259,7 +267,8 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
             
             modelo.setRowCount(0);
                 for(Cliente item:lista){
-                    modelo.addRow(new String[]{String.valueOf(item.getNome()),
+                    modelo.addRow(new String[]{String.valueOf(item.getCodCliente()),
+                                                String.valueOf(item.getNome()),
                                                 String.valueOf(item.getCpf()),
                                                 String.valueOf(item.getDataNasc()),
                                                 String.valueOf(item.getSexo()),
@@ -283,14 +292,23 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linhaSelecionada = tblCliente.getSelectedRow();
-        int id = Integer.parseInt(tblCliente.getValueAt(linhaSelecionada, 0).toString());
+        int id =0;
+        
+        if(linhaSelecionada>=0){
+            id = Integer.parseInt(tblCliente.getValueAt(linhaSelecionada, 0).toString());
+        DefaultTableModel model = (DefaultTableModel) tblCliente.getModel();
+            model.removeRow(linhaSelecionada);
+            
+        }
         
         boolean retorno = ClienteDAO.excluir(id);
         if(retorno){
             JOptionPane.showMessageDialog(this, "Cliente excluído com sucesso!");
+            
         }else{
             JOptionPane.showMessageDialog(this, "Falha na exclusão!");
         }
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**

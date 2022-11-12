@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ClienteDAO {
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
     public static String login = "root";
-    public static String senha = ""; //P@$$w0rd
+    public static String senha = "P@$$w0rd"; //P@$$w0rd
     
     public static boolean salvar(Cliente obj) throws SQLException{
         Connection conexao = null;
@@ -81,6 +81,7 @@ public class ClienteDAO {
                     novoCliente.setCep(rs.getString("cep"));
                     novoCliente.setEndereco(rs.getString("endereco"));
                     novoCliente.setNumeroCasa(rs.getInt("nro_casa"));
+                    novoCliente.setCodCliente(rs.getInt("cod_cliente"));
                                                                             
                     lista.add(novoCliente);
                 }
@@ -104,20 +105,18 @@ public class ClienteDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection(url, login, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Cliente SET nome=?, cpf=?, email=?, endereco=?, nro_casa=? celular=? cep=? dataNasc=? sexo=? statusCivil=? WHERE cod_cliente=?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE cliente SET nome=?, cpf=?, email=?, celular=?, endereco=?, dataNasc=?, nro_casa=?, cep=?, sexo=?, statusCivil=? WHERE cod_cliente=?");
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getCpf());
             comandoSQL.setString(3, obj.getEmail());
-            comandoSQL.setString(4, obj.getEndereco());
-            comandoSQL.setInt(5, obj.getNumeroCasa());
-            comandoSQL.setString(6, obj.getCelular());
-            comandoSQL.setString(7, obj.getCep());
-            comandoSQL.setDate(8, new java.sql.Date(obj.getDataNasc().getTime()));
+            comandoSQL.setString(4, obj.getCelular());
+            comandoSQL.setString(5, obj.getEndereco());
+            comandoSQL.setDate(6, new java.sql.Date(obj.getDataNasc().getTime()));
+            comandoSQL.setInt(7, obj.getNumeroCasa());
+            comandoSQL.setString(8, obj.getCep());
             comandoSQL.setInt(9, obj.getSexo());
             comandoSQL.setInt(10, obj.getStatusCivil());
-            comandoSQL.setDouble(11, obj.getCodCliente());
-            
-            //Inserir os demais argummentos
+            comandoSQL.setInt(11, obj.getCodCliente());
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
