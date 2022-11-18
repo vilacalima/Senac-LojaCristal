@@ -247,7 +247,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         Validador validador = new Validador();
-//        validador.validaEntradaPalavra(evt, txtPesquisar, "o código do produto");
+        validador.validaEntradaPalavra(evt, txtPesquisar, "o código do produto");
         
         try{
             String procurarDescricao = txtPesquisar.getText();

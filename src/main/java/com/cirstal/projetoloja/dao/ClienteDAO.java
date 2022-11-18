@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ClienteDAO {
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
     public static String login = "root";
-    public static String senha = "P@$$w0rd"; //P@$$w0rd
+    public static String senha = ""; //P@$$w0rd
     
     public static boolean salvar(Cliente obj) throws SQLException{
         Connection conexao = null;
@@ -90,6 +90,34 @@ public class ClienteDAO {
             System.out.println(ex.getMessage());
         }
         return lista;
+    }
+    
+    public static Cliente listarCPF(String cpf){
+        Connection conexao;
+        Cliente cliente = null;
+        //Cliente cliente = new Cliente();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection(url,login,senha);
+
+            PreparedStatement comandoSQL =
+            conexao.prepareStatement("SELECT nome, cod_cliente FROM cliente WHERE cpf=?");
+            comandoSQL.setString(1, cpf);
+            
+            ResultSet rs = comandoSQL.executeQuery();
+            
+            if(rs!=null){
+                while(rs.next()){
+                    cliente = new Cliente();
+                    cliente.setNome(rs.getString("nome"));
+                    cliente.setCodCliente(rs.getInt("cod_cliente")); 
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cliente;
     }
     
     public static Cliente consultarPorCpf(String cpf){

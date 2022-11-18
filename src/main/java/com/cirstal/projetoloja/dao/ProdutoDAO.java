@@ -82,6 +82,39 @@ public class ProdutoDAO {
         return lista;
     }
     
+    public static ArrayList<Produto> listarSelecao(Produto obj) throws SQLException{
+        Connection conexao = null;
+        ArrayList<Produto> lista = new ArrayList<Produto>();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection(url,login,senha);
+
+            PreparedStatement comandoSQL =
+            conexao.prepareStatement("SELECT * FROM produto where descricao=?");
+            comandoSQL.setString(1, obj.getDescricao());
+            //cod_produto, descricao, cor, tamanho, valor
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if(rs != null){
+                while(rs.next()){
+                    Produto novoProduto = new Produto();
+                    novoProduto.setCodigo(rs.getInt("cod_produto"));
+                    novoProduto.setDescricao(rs.getString("descricao"));
+                    novoProduto.setCor(rs.getString("cor"));
+                    novoProduto.setTamanho(rs.getInt("tamanho"));
+                    novoProduto.setValor(rs.getDouble("valor"));
+                    
+                    
+                    lista.add(novoProduto);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lista;
+    }
+    
     public static Produto consultar(int produto){
         Produto lista = new Produto();
         return lista;

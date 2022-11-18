@@ -24,6 +24,26 @@ create table Produto(
     fornecedor varchar(15)    
 );
 
+create table Venda(
+	cod_Venda int primary key auto_increment not null,
+    numeroVenda int not null,
+    valorTotal decimal not null,
+    dataVenda date not null
+);
+
+create table itemVenda(
+	cod_ItemVenda int primary key auto_increment not null,
+    cod_Venda int not null,
+    cod_Produto int not null,
+    cod_Cliente int not null,
+    valorUnitProduto decimal not null,
+    quantidadeProduto int not null,
+    foreign key(cod_Cliente) references Cliente(cod_Cliente),
+    foreign key(cod_Produto) references Produto(Cod_Produto)
+);
+
+select nome, cod_cliente from cliente where cpf='11111111111';
+
 select*from Cliente;
 desc produto;
 insert into cliente (nome, cpf, email, celular, endereco, dataNasc, nro_casa, cep, sexo, statusCivil)
@@ -35,4 +55,11 @@ insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
 			values('branco', 'tenis', 'adidas', 10, 35, 100),
             ('preto', 'sapatenis', 'nike', 15, 32, 500),
             ('rosa', 'tenis', 'olimpcos', 20, 33, 600);
-	
+
+select 	cod_produto, descricao, cor, tamanho, valor from Produto where descricao='tenis';
+
+"cod_produto"));
+                    novoProduto.setDescricao(rs.getString("descricao"));
+                    novoProduto.setCor(rs.getString("cor"));
+                    novoProduto.setTamanho(rs.getInt("tamanho"));
+                    novoProduto.setValor(rs.getDouble("valor"));

@@ -26,6 +26,9 @@ public class Produto {
     public Produto(String descricao){
         this.descricao = descricao;
     }
+    public Produto(int codigo){
+        this.codigo = codigo;
+    }
     
     public Produto(String descricao, String cor, int tamanho, double valor, int quantidade, String fornecedor){
         this.descricao = descricao;
@@ -34,6 +37,13 @@ public class Produto {
         this.valor = valor;
         this.quantidade = quantidade;
         this.fornecedor = fornecedor;        
+    }
+    
+    public Produto(int codigo, String descricao, int quantidade, double valor){
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+        this.valor = valor;
     }
     
     public Produto(int codigo, String descricao, String cor, int tamanho, double valor, int quantidade, String fornecedor){
