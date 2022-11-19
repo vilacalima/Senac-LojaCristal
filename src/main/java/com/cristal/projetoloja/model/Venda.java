@@ -15,9 +15,12 @@ public class Venda {
     private int codVenda;
     private int numeroVenda;
     private double valorTotalVenda;
+    private int cliente;
+    private int vendedor;    
+    private int tipoPagamento;
     private Date dataVenda;    
     private ArrayList<ItemVenda> listaProdutos = null;
-    
+            
     public Venda(){
         
     }
@@ -34,6 +37,30 @@ public class Venda {
     
     public void setListaProdutos(ArrayList<ItemVenda> novoListaProdutos){
         this.listaProdutos = novoListaProdutos;
+    }
+    
+    public int getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(int novoCliente) {
+        this.cliente = novoCliente;
+    }
+
+    public int getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(int novoVendedor) {
+        this.vendedor = novoVendedor;
+    }
+
+    public int getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(int novoTipoPagamento) {
+        this.tipoPagamento = novoTipoPagamento;
     }
     
     public Date getDataVenda() {

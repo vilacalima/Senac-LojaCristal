@@ -16,7 +16,6 @@ public class ItemVenda {
     private String descricaoProduto;
     private double valorUnitProduto;
     private int quantidadeProduto;    
-    private int codCliente;
     
     public ItemVenda(){
         
@@ -59,14 +58,6 @@ public class ItemVenda {
 
     public void setCodVenda(int codVenda) {
         this.codVenda = codVenda;
-    }
-
-    public int getCodCliente() {
-        return codCliente;
-    }
-
-    public void setCodCliente(int codCliente) {
-        this.codCliente = codCliente;
     }
 
     public double getValorUnitProduto() {

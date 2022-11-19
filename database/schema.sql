@@ -25,21 +25,23 @@ create table Produto(
 );
 
 create table Venda(
-	cod_Venda int primary key auto_increment not null,
-    numeroVenda int not null,
+	cod_Venda int primary key auto_increment,
     valorTotal decimal not null,
-    dataVenda date not null
+    dataVenda date not null,
+    cod_Cliente int not null,
+    cod_Vendedor int not null,
+    tipoPagamento int not null,
+	foreign key(cod_Cliente) references Cliente(cod_Cliente)
 );
 
 create table itemVenda(
-	cod_ItemVenda int primary key auto_increment not null,
+	cod_ItemVenda int primary key auto_increment,
     cod_Venda int not null,
     cod_Produto int not null,
-    cod_Cliente int not null,
-    valorUnitProduto decimal not null,
     quantidadeProduto int not null,
-    foreign key(cod_Cliente) references Cliente(cod_Cliente),
-    foreign key(cod_Produto) references Produto(Cod_Produto)
+    valorUnitProduto decimal not null,
+    foreign key(cod_Produto) references Produto(Cod_Produto),
+    foreign key(cod_Venda) references Venda(cod_Venda)
 );
 
 select nome, cod_cliente from cliente where cpf='11111111111';
@@ -57,9 +59,15 @@ insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
             ('rosa', 'tenis', 'olimpcos', 20, 33, 600);
 
 select 	cod_produto, descricao, cor, tamanho, valor from Produto where descricao='tenis';
+select * from venda;
+select * from itemVenda;
 
-"cod_produto"));
-                    novoProduto.setDescricao(rs.getString("descricao"));
-                    novoProduto.setCor(rs.getString("cor"));
-                    novoProduto.setTamanho(rs.getInt("tamanho"));
-                    novoProduto.setValor(rs.getDouble("valor"));
+
+#select para sintetico
+select dataVenda, Cliente.nome, valorTotal from Venda 
+		inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda='2022-11-18';
+
+#select para analitico
+select cod_Produto, quantidadeProduto,valorUnitProduto from itemVenda where cod_Venda='3';
+
+
