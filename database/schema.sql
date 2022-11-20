@@ -60,7 +60,7 @@ insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
 
 select 	cod_produto, descricao, cor, tamanho, valor from Produto where descricao='tenis';
 select * from venda;
-select * from itemVenda;
+select * from produto;
 
 
 #select para sintetico

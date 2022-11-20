@@ -241,7 +241,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         obj.setQuantidade(Integer.parseInt(tblEstoque.getValueAt(linhaSelecionada,5).toString()));
         obj.setFornecedor(tblEstoque.getValueAt(linhaSelecionada, 6).toString());
             
-        TelaProduto telaProduto = new TelaProduto(obj);
+        TelaCadastrarProduto telaProduto = new TelaCadastrarProduto(obj);
         telaProduto.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 

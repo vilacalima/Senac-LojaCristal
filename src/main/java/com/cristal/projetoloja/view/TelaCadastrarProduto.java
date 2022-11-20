@@ -19,18 +19,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Leona
  */
-public class TelaProduto extends javax.swing.JFrame {
+public class TelaCadastrarProduto extends javax.swing.JFrame {
 
     Produto objProduto = null;
     /**
      * Creates new form TelaProduto
      */
-    public TelaProduto() {
+    public TelaCadastrarProduto() {
         initComponents();
        
     }
     
-    public TelaProduto(Produto obj){
+    public TelaCadastrarProduto(Produto obj){
         initComponents();
         this.objProduto = obj;
         
@@ -91,6 +91,7 @@ public class TelaProduto extends javax.swing.JFrame {
 
         jLabel1.setText("Codigo:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtCodigoMouseEntered(evt);
@@ -520,7 +521,7 @@ public class TelaProduto extends javax.swing.JFrame {
                 }
             }
         } catch(SQLException ex) {
-            Logger.getLogger(TelaProduto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }    
     }//GEN-LAST:event_btnIncluirActionPerformed
 
@@ -545,20 +546,21 @@ public class TelaProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaProduto().setVisible(true);
+                new TelaCadastrarProduto().setVisible(true);
             }
         });
     }

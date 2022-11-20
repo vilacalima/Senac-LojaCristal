@@ -20,18 +20,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Leona
  */
-public class TelaCliente extends javax.swing.JFrame {
+public class TelaCadastrarCliente extends javax.swing.JFrame {
 
     Cliente objCliente = null;
     /**
      * Creates new form TelaProduto
      */
-    public TelaCliente() {
+    public TelaCadastrarCliente() {
         initComponents();
        
     }
 
-    TelaCliente(Cliente obj) {
+    TelaCadastrarCliente(Cliente obj) {
         initComponents();
         this.objCliente = obj;
         
@@ -149,7 +149,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
         jLabel3.setText("Data de Nascimento : ");
 
-        jLabel4.setText("     CPF :");
+        jLabel4.setText("CPF :");
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -295,8 +295,8 @@ public class TelaCliente extends javax.swing.JFrame {
                                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel4))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,7 +489,7 @@ public class TelaCliente extends javax.swing.JFrame {
         validador.validaEntradaPalavra(evt, txtEndereco, "endereço");
         validador.validaEntradaPalavra(evt, txtNumeroCasa, "número da casa");
         validador.validaEntradaPalavra(evt, txtCEP, "CEP");
-
+        
         try{
             if(this.objCliente == null){
                 String nome = txtNome.getText();
@@ -546,7 +546,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 }
             }
         } catch(SQLException ex) {
-            Logger.getLogger(TelaProduto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -572,14 +572,18 @@ public class TelaCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -588,7 +592,7 @@ public class TelaCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCliente().setVisible(true);
+                new TelaCadastrarCliente().setVisible(true);
             }
         });
     }

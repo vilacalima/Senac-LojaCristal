@@ -249,7 +249,7 @@ public class TelaConsultaCliente extends javax.swing.JFrame {
         obj.setEndereco(tblCliente.getValueAt(linhaSelecionada, 9).toString());        
         obj.setNumeroCasa(Integer.parseInt(tblCliente.getValueAt(linhaSelecionada,10).toString()));
 
-        TelaCliente novaTela = new TelaCliente(obj);
+        TelaCadastrarCliente novaTela = new TelaCadastrarCliente(obj);
         novaTela.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 

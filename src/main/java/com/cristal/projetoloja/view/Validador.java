@@ -6,6 +6,7 @@ package com.cristal.projetoloja.view;
 
 import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -38,5 +39,12 @@ public class Validador {
             JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
+    
+    public void validaEntradaNumero(java.awt.event.ActionEvent evt, JComboBox txt, String texto){
+        if(txt.equals("Selecione")){
+            JOptionPane.showMessageDialog(null, "Digite " + texto);
+        }
+    }
+    
 
 }

@@ -272,7 +272,7 @@ public class TelaVenda extends javax.swing.JFrame {
 
         btnFinalizar.setBackground(new java.awt.Color(204, 255, 204));
         btnFinalizar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnFinalizar.setText("Finalizar Venda e Imprimir Nota");
+        btnFinalizar.setText("Finalizar Venda");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
@@ -376,17 +376,17 @@ public class TelaVenda extends javax.swing.JFrame {
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Descrição", "Cor", "Tamanho", "Valor"
+                "Cod", "Descrição", "Cor", "Qtd", "Tamanho", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -570,11 +570,12 @@ public class TelaVenda extends javax.swing.JFrame {
             modelo.setRowCount(0);
             for(Produto item:lista){
                 modelo.addRow(new String[]{String.valueOf(item.getCodigo()),
-                    String.valueOf(item.getDescricao()),
-                    String.valueOf(item.getCor()),
-                    String.valueOf(item.getTamanho()),
-                    String.valueOf(item.getValor()),
-                });
+                                        String.valueOf(item.getDescricao()),
+                                        String.valueOf(item.getCor()),
+                                        String.valueOf(item.getQuantidade()),
+                                        String.valueOf(item.getTamanho()),
+                                        String.valueOf(item.getValor())
+                                      });
             }
 
         }catch (SQLException ex) {
@@ -583,27 +584,39 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+                
         int linhaSelecionada = tblEstoque.getSelectedRow();
 
         if(linhaSelecionada>=0){
             int codigo = Integer.parseInt(tblEstoque.getValueAt(linhaSelecionada, 0).toString());
             String descricao = tblEstoque.getValueAt(linhaSelecionada, 1).toString();
             int quantidade = Integer.parseInt(spinnerQtd.getValue().toString());
-            Double valorUnit = Double.parseDouble(tblEstoque.getValueAt(linhaSelecionada, 4).toString());
+            Double valorUnit = Double.parseDouble(tblEstoque.getValueAt(linhaSelecionada, 5).toString());
             Double total = valorUnit * quantidade;
             
-            DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
-            modelo.addRow(new String[]{
-                                    String.valueOf(codigo),
-                                    String.valueOf(descricao), 
-                                    String.valueOf(quantidade),
-                                    String.valueOf(valorUnit),
-                                    String.valueOf(total)
-                                    }
-                    );
+            int quantidadeEstoque = Integer.parseInt(tblEstoque.getValueAt(linhaSelecionada, 3).toString());
             
-            totalProduto += total;
-            txtValorTotal.setText(String.valueOf(totalProduto));
+            if(quantidade != 0){
+                if(quantidadeEstoque < quantidade){
+                    JOptionPane.showMessageDialog(this, "Não temos quantidade em estoque");
+                } else{
+                    DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+                    modelo.addRow(new String[]{
+                                            String.valueOf(codigo),
+                                            String.valueOf(descricao), 
+                                            String.valueOf(quantidade),
+                                            String.valueOf(valorUnit),
+                                            String.valueOf(total)
+                                            }
+
+                            );
+
+                    totalProduto += total;
+                    txtValorTotal.setText(String.valueOf(totalProduto));
+                }
+            } else{
+                JOptionPane.showMessageDialog(this, "Selecione quantos produtos irá comprar");
+            }
         } else{
             JOptionPane.showMessageDialog(this, "Selecione uma linha!");
         }
