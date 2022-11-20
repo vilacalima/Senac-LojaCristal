@@ -21,7 +21,7 @@ public class VendaDAO {
     
     static String URL = "jdbc:mysql://localhost:3306/lojacristal";
     static String Login = "root";
-    static String Senha = "P@$$w0rd";
+    static String Senha = ""; //P@$$w0rd
     
     public static boolean salvar(Venda obj) {
         boolean retorno = false;

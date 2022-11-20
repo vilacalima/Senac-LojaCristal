@@ -21,6 +21,11 @@ import java.util.ArrayList;
  * @author robson.vlima3
  */
 public class RelatorioDAO {
+    
+    public static String url = "jdbc:mysql://localhost:3306/lojacristal";
+    public static String login = "root";
+    public static String senha = ""; //P@$$w0rd
+    
     public static ArrayList<Relatorio> listarSintetico(Relatorio obj){
         Connection conexao;
         ArrayList<Relatorio> listaRelatorio = new ArrayList<Relatorio>();
@@ -30,14 +35,16 @@ public class RelatorioDAO {
             conexao = DriverManager.getConnection(url,login,senha);
 
             PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT dataVenda, Cliente.nome, valorTotal FROM Venda inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda=?");
-            comandoSQL.setDate(1, new java.sql.Date(obj.getDataVenda().getTime()));
+            conexao.prepareStatement("SELECT cod_Venda, dataVenda, Cliente.nome, valorTotal FROM Venda inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda>=? AND dataVenda<=?");
+            comandoSQL.setDate(1, new java.sql.Date(obj.getDataEntrada().getTime()));
+            comandoSQL.setDate(2, new java.sql.Date(obj.getDataSaida().getTime()));
             
             ResultSet rs = comandoSQL.executeQuery();
             
             if(rs!=null){
                 while(rs.next()){
                     Relatorio relatorio = new Relatorio();
+                    relatorio.setCodVenda(rs.getInt("cod_Venda"));
                     relatorio.setDataVenda(rs.getDate("dataVenda"));
                     relatorio.setNomeCliente(rs.getString("Cliente.nome"));
                     relatorio.setValorTotal(rs.getDouble("valorTotal"));
@@ -60,7 +67,7 @@ public class RelatorioDAO {
             conexao = DriverManager.getConnection(url,login,senha);
 
             PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT cod_Produto, quantidadeProduto,valorUnitProduto from itemVenda where cod_Venda=?");
+            conexao.prepareStatement("SELECT Produto.descricao, quantidadeProduto,valorUnitProduto from itemVenda inner join Produto on itemVenda.cod_Produto = Produto.cod_produto where cod_Venda=?");
             comandoSQL.setInt(1, obj.getCodVenda());
             
             ResultSet rs = comandoSQL.executeQuery();
@@ -68,7 +75,7 @@ public class RelatorioDAO {
             if(rs!=null){
                 while(rs.next()){
                     Relatorio relatorio = new Relatorio();
-                    relatorio.setCodProduto(rs.getInt("cod_Produto"));
+                    relatorio.setDescricaoProduto(rs.getString("Produto.descricao"));
                     relatorio.setQuantidadeProduto(rs.getInt("quantidadeProduto"));
                     relatorio.setValorUnitario(rs.getDouble("valorUnitProduto"));
                     

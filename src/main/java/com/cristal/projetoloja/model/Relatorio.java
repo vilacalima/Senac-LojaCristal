@@ -13,17 +13,29 @@ import java.util.Date;
 public class Relatorio {
 
     private Date dataVenda;
+    private Date dataEntrada;
+    private Date dataSaida;
     private String nomeCliente;
     private Double valorTotal;
     private int codVenda;
     
+    
     //Analitico
-    private int codProduto;
+    private String descricaoProduto;
     private int quantidadeProduto;
     private Double valorUnitario;
-    
+     
     public Relatorio(){
         
+    }
+    
+    public Relatorio(int codVenda){
+        this.codVenda = codVenda;
+    }
+    
+    public Relatorio(Date dataEntrada, Date dataSaida) {
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
     }
     
     public Relatorio(Date dataVenda, String nomeCliente, Double valorTotal) {
@@ -32,14 +44,30 @@ public class Relatorio {
         this.valorTotal = valorTotal;
     }
     
-    public Relatorio(Date dataVenda, String nomeCliente, Double valorTotal, int codVenda, int codProduto, int quantidadeProduto, Double valorUnitario) {
+    public Relatorio(Date dataVenda, String nomeCliente, Double valorTotal, int codVenda, String descricaoProduto, int quantidadeProduto, Double valorUnitario) {
         this.dataVenda = dataVenda;
         this.nomeCliente = nomeCliente;
         this.valorTotal = valorTotal;
         this.codVenda = codVenda;
-        this.codProduto = codProduto;
+        this.descricaoProduto = descricaoProduto;
         this.quantidadeProduto = quantidadeProduto;
         this.valorUnitario = valorUnitario;
+    }
+    
+    public Date getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public Date getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(Date dataSaida) {
+        this.dataSaida = dataSaida;
     }
     
     public Date getDataVenda() {
@@ -74,12 +102,12 @@ public class Relatorio {
         this.codVenda = codVenda;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public String getDescricaoProduto() {
+        return descricaoProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
     }
 
     public int getQuantidadeProduto() {

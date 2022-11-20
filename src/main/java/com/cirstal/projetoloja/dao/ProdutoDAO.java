@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ProdutoDAO {
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
     public static String login = "root";
-    public static String senha = "P@$$w0rd"; //P@$$w0rd
+    public static String senha = ""; //P@$$w0rd
     
     public static boolean salvar(Produto obj) throws SQLException{
         Connection conexao = null;

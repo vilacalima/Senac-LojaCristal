@@ -46,7 +46,7 @@ create table itemVenda(
 
 select nome, cod_cliente from cliente where cpf='11111111111';
 
-select*from Cliente;
+select*from Venda;
 desc produto;
 insert into cliente (nome, cpf, email, celular, endereco, dataNasc, nro_casa, cep, sexo, statusCivil)
 			values('teste1', '11111111111', 'teste1@teste', '11911111111', 'teste1 teste', '2001-01-01',1,01111111,1,1),
@@ -65,9 +65,11 @@ select * from itemVenda;
 
 #select para sintetico
 select dataVenda, Cliente.nome, valorTotal from Venda 
-		inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda='2022-11-18';
+		inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda>='2022-11-19' and dataVenda<='2022-11-19';
 
 #select para analitico
 select cod_Produto, quantidadeProduto,valorUnitProduto from itemVenda where cod_Venda='3';
+
+select Produto.descricao, quantidadeProduto,valorUnitProduto from itemVenda inner join Produto on itemVenda.cod_Produto = Produto.cod_produto where cod_Venda='4';
 
 

@@ -502,15 +502,13 @@ public class TelaVenda extends javax.swing.JFrame {
                 ItemVenda itemVenda = new ItemVenda();
                 
                 itemVenda.setCodProduto(Integer.parseInt(tblProdutos.getValueAt(i, 0).toString()));
-//                itemVenda.setDescricaoProduto(tblProdutos.getValueAt(i, 1).toString());
                 itemVenda.setQuantidadeProduto(Integer.parseInt(tblProdutos.getValueAt(i, 2).toString()));
                 itemVenda.setValorUnitProduto(Double.parseDouble(tblProdutos.getValueAt(i, 3).toString()));
                 
                 itens.add(itemVenda);
             }
         }
-        
-//        int numeroVenda = Integer.parseInt(txtNumeroVenda.getText());
+
         Double valorTotal = Double.parseDouble(txtValorTotal.getText());
         int cliente = this.codCliente;
         int codVendedor = cbxIDVendedor.getSelectedIndex();
@@ -519,7 +517,6 @@ public class TelaVenda extends javax.swing.JFrame {
         
         
         Venda objVenda = new Venda();
-//        objVenda.setCodVenda(numeroVenda);;
         objVenda.setValorTotalVenda(valorTotal);
         objVenda.setListaProdutos(itens);
         objVenda.setCliente(cliente);
@@ -532,6 +529,7 @@ public class TelaVenda extends javax.swing.JFrame {
         if (retorno){
             TelaFinalizacao finalizaVenda = new TelaFinalizacao();
             finalizaVenda.setVisible(true);
+                        
         } else{
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }  
@@ -542,8 +540,8 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxIFormaPagamentoActionPerformed
 
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
-        Validador validador = new Validador();
-        validador.validaEntradaPalavra(evt, txtCPFcliente, "o CPF para realizar a pesquisa");
+     //   Validador validador = new Validador();
+     //   validador.validaEntradaPalavra(evt, txtCPFcliente, "o CPF para realizar a pesquisa");
         
         if(!txtCPFcliente.getText().trim().equals("")){
             String cpf = txtCPFcliente.getText().replaceAll("[^0-9]", "");
