@@ -4,7 +4,7 @@ use LojaCristal;
 create table Cliente(
 	cod_cliente int primary key auto_increment,
     nome varchar(40),
-    cpf varchar(11) unique,
+    cpf varchar(11) unique not null,
     dataNasc date,
     sexo int,
     statusCivil int,
@@ -60,7 +60,7 @@ insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
 
 select 	cod_produto, descricao, cor, tamanho, valor from Produto where descricao='tenis';
 select * from venda;
-select * from produto;
+select * from cliente;
 
 
 #select para sintetico
@@ -72,4 +72,5 @@ select cod_Produto, quantidadeProduto,valorUnitProduto from itemVenda where cod_
 
 select Produto.descricao, quantidadeProduto,valorUnitProduto from itemVenda inner join Produto on itemVenda.cod_Produto = Produto.cod_produto where cod_Venda='4';
 
+update produto set quantidade = quantidade - 5 where cod_Produto=1;
 

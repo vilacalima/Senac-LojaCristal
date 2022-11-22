@@ -489,13 +489,19 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
             int quantidade = Integer.parseInt(txtQuantidade.getText());
             String fornecedor = txtFornecedor.getText();
 
-            objProduto = new Produto(descricao, cor, tamanho, valor, quantidade, fornecedor);
-            boolean retorno = ProdutoDAO.salvar(objProduto);
-
+            boolean retorno = false;
+                    
+            if(descricao !=null || cor  !=null || valor  !=0 || tamanho  !=0 || quantidade  !=0 || fornecedor  !=null){
+                objProduto = new Produto(descricao, cor, tamanho, valor, quantidade, fornecedor);
+                retorno = ProdutoDAO.salvar(objProduto);
+            }
+            
             if(retorno){
                 JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
+                objProduto=null;
             }else{
                 JOptionPane.showMessageDialog(this,"Falha na gravação!");
+                objProduto=null;
             }
 
             } else{
@@ -513,7 +519,12 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
                 objProduto.setQuantidade(quantidade);
                 objProduto.setFornecedor(fornecedor);
 
-                boolean retorno = ProdutoDAO.atualizar(objProduto);
+                boolean retorno = false;
+                
+                if(objProduto != null){
+                    retorno = ProdutoDAO.atualizar(objProduto);
+                }
+                
                 if(retorno){
                     JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
                 }else{

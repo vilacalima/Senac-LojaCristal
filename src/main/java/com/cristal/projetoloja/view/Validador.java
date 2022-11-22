@@ -4,6 +4,7 @@
  */
 package com.cristal.projetoloja.view;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.event.KeyEvent;
 import java.util.InputMismatchException;
 import javax.swing.JComboBox;
@@ -40,11 +41,22 @@ public class Validador {
         }
     }
     
-    public void validaEntradaNumero(java.awt.event.ActionEvent evt, JComboBox txt, String texto){
-        if(txt.equals("Selecione")){
+    public void validaEntradaTexto(java.awt.event.ActionEvent evt, String txt, String texto){
+        if(txt.equals("")){
             JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
     
+    public void validaEntradaNumero(java.awt.event.ActionEvent evt, JComboBox txt, String texto){
+        if(txt.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Digite " + texto);
+        }
+    }
+    
+    public void validaData(java.awt.event.ActionEvent evt, JDateChooser data, String texto){
+        if(data.getDate() == null){
+            JOptionPane.showMessageDialog(null, "Digite " + texto);
+        }
+    }
 
 }

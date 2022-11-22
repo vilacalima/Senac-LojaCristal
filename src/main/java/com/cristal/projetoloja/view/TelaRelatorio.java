@@ -225,6 +225,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        Validador validador = new Validador();
+        validador.validaData(evt, dateEntrada, "a data de entrada");
+        validador.validaData(evt, dateSaida, "a data de saída");
         
         if(dateEntrada != null && dateSaida !=null){
             Date dataEntrada = dateEntrada.getDate();

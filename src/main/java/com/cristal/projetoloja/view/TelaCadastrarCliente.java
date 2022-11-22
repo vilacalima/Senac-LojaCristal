@@ -483,33 +483,42 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
         Validador validador = new Validador();
         validador.validaEntradaPalavra(evt, txtNome, "nome");
-        validador.validaEntradaPalavra(evt, txtCPF, "CPF");
+        validador.validaData(evt, dateNasc, "a data de nascimento");
+        validador.validaEntradaNumero(evt, boxSexo, "o sexo");
+        validador.validaEntradaNumero(evt, boxStatusCivil, "Status civil");
         validador.validaEntradaPalavra(evt, txtEmail, "email");
-        validador.validaEntradaPalavra(evt, txtCelular, "celular");
         validador.validaEntradaPalavra(evt, txtEndereco, "endereço");
         validador.validaEntradaPalavra(evt, txtNumeroCasa, "número da casa");
-        validador.validaEntradaPalavra(evt, txtCEP, "CEP");
         
         try{
             if(this.objCliente == null){
                 String nome = txtNome.getText();
                 String cpf = txtCPF.getText().replaceAll("[^0-9]", "");
+                validador.validaEntradaTexto(evt, cpf, "CPF");
                 String email = txtEmail.getText();
                 String celular = txtCelular.getText().replaceAll("[^0-9]", "");
+                validador.validaEntradaTexto(evt, celular, "celular");
                 String endereco = txtEndereco.getText();
                 Date dataNasc = dateNasc.getDate();
                 int numeroCasa = Integer.parseInt(txtNumeroCasa.getText());
                 String cep = txtCEP.getText().replaceAll("[^0-9]", "");
+                validador.validaEntradaTexto(evt, cep, "CEP");
                 int sexo = boxSexo.getSelectedIndex();
                 int statusCivil = boxStatusCivil.getSelectedIndex();
 
-                objCliente =  new Cliente(nome, cpf, dataNasc, sexo, statusCivil, email, celular, cep, endereco, numeroCasa);
-                boolean retorno = ClienteDAO.salvar(objCliente);
+                boolean retorno = false;
 
+                if(nome != null || cpf !=null || email !=null || celular !=null || endereco !=null || numeroCasa !=0 || cep !=null || sexo !=0 || statusCivil !=0 || dataNasc != null){
+                    objCliente =  new Cliente(nome, cpf, dataNasc, sexo, statusCivil, email, celular, cep, endereco, numeroCasa);
+                    retorno = ClienteDAO.salvar(objCliente);
+                }
+                
                 if(retorno){
                     JOptionPane.showMessageDialog(this,"Cliente gravado com sucesso!");
+                    objCliente=null;
                 }else{
                     JOptionPane.showMessageDialog(this,"Falha na gravação!");
+                    objCliente=null;
                 }
             } else{
                 int codCliente = Integer.parseInt(txtCliente.getText());
@@ -539,10 +548,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 boolean retorno = ClienteDAO.atualizar(objCliente);
                 if(retorno){
                     JOptionPane.showMessageDialog(this,"Cliente alterado com sucesso!");
-                    objCliente=null;
                 }else{
                     JOptionPane.showMessageDialog(this,"Falha na gravação!");
-                    objCliente=null;
                 }
             }
         } catch(SQLException ex) {

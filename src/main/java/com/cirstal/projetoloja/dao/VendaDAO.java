@@ -49,9 +49,13 @@ public class VendaDAO {
                         comandoSQLItem.setInt(3, item.getQuantidadeProduto());
                         comandoSQLItem.setDouble(4,item.getValorUnitProduto());
                         
+                        PreparedStatement comandoSQLUpdate = conexao.prepareStatement("UPDATE produto SET quantidade = quantidade - ? WHERE cod_Produto=?");
+                        comandoSQLUpdate.setInt(1, item.getQuantidadeProduto());
+                        comandoSQLUpdate.setInt(2, item.getCodProduto());
 
                         int linhasAfetadasItem = comandoSQLItem.executeUpdate();
-                        if(linhasAfetadasItem>0){
+                        int linhasAfetadasUpdate = comandoSQLUpdate.executeUpdate();
+                        if(linhasAfetadasItem>0 && linhasAfetadasUpdate>0){
                             retorno = true;
                         }
                     }

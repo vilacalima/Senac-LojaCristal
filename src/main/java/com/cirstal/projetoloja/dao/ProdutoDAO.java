@@ -5,6 +5,7 @@
 package com.cirstal.projetoloja.dao;
 
 import com.cristal.projetoloja.model.Produto;
+import com.cristal.projetoloja.model.Venda;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -137,28 +138,6 @@ public class ProdutoDAO {
             comandoSQL.setInt(5, obj.getTamanho());
             comandoSQL.setDouble(6, obj.getValor());
             comandoSQL.setInt(7, obj.getCodigo());
-            
-            int linhasAfetadas = comandoSQL.executeUpdate();
-            if(linhasAfetadas>0){
-                retorno = true;
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return retorno;
-    }
-    
-    public static boolean atualizarQuantidade(Produto obj){
-        Connection conexao = null;
-        boolean retorno = false;
-        
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection(url, login, senha);
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET quantidade=? WHERE cod_produto=?");
-            comandoSQL.setInt(1, obj.getQuantidade());
-            comandoSQL.setInt(2, obj.getCodigo());
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
