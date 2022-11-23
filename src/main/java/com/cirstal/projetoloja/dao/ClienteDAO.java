@@ -15,14 +15,32 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe para implementar no banco de dados do objetos do tipo cliente
  * @author robso
  */
 public class ClienteDAO {
+
+    /**
+     * Url para consulta no banco de dados
+     */
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
+
+    /**
+     * Login para acesso ao banco de dados
+     */
     public static String login = "root";
-    public static String senha = ""; //P@$$w0rd
+
+    /**
+     * Senha para acesso ao banco de dados Senha usada nos computadores do senac - > P@$$w0rd
+     */
+    public static String senha = "";
     
+    /**
+     * Método para salvar objetos do tipo cliente no banco de dados
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
     public static boolean salvar(Cliente obj) throws SQLException{
         Connection conexao = null;
         boolean retorno = false;
@@ -54,6 +72,12 @@ public class ClienteDAO {
         return retorno;
     }
     
+    /**
+     * Método para listar objetos do tipo cliente do banco de dados
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<Cliente> listar(Cliente obj) throws SQLException{
         Connection conexao = null;
         ArrayList<Cliente> lista = new ArrayList<Cliente>();
@@ -92,6 +116,11 @@ public class ClienteDAO {
         return lista;
     }
     
+    /**
+     * Método para lista objetos pelo CPF
+     * @param cpf
+     * @return
+     */
     public static Cliente listarCPF(String cpf){
         Connection conexao;
         Cliente cliente = null;
@@ -120,11 +149,11 @@ public class ClienteDAO {
         return cliente;
     }
     
-    public static Cliente consultarPorCpf(String cpf){
-        Cliente lista = new Cliente();
-        return lista;
-    }
-    
+    /**
+     * Método para atualizar objeto cliente no banco de dados
+     * @param obj
+     * @return
+     */
     public static boolean atualizar(Cliente obj){
         Connection conexao = null;
         boolean retorno = false;
@@ -156,24 +185,24 @@ public class ClienteDAO {
         return retorno;
     }
     
+    /**
+     * Método para excluir cliente no banco de dados
+     * @param id
+     * @return
+     */
     public static boolean excluir(int id){
     
         Connection conexao = null;
         boolean retorno = false;
         
         try {
-            
-            //TODO: Implementar insert na tabela NotaFiscal
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            //Abrir a conexão
             conexao = DriverManager.getConnection(url,login,senha);
             
-            //Criar o comando sql
             PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM Cliente WHERE cod_cliente=?");
             comandoSQL.setInt(1,id);            
             
-            //Executar o comando
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
                retorno = true;
@@ -186,8 +215,5 @@ public class ClienteDAO {
         }
         
         return retorno;
-    
-    }
-        
+    }      
 }
-

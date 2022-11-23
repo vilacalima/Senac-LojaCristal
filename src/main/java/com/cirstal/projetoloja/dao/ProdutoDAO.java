@@ -14,14 +14,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe para implementar no banco de dados do objetos do tipo produto
  * @author robso
  */
 public class ProdutoDAO {
+
+    /**
+     * Url para consulta no banco de dados
+     */
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
+
+    /**
+     * Login para acesso ao banco de dados
+     */
     public static String login = "root";
-    public static String senha = ""; //P@$$w0rd
+
+    /**
+     * Senha para acesso ao banco de dados Senha usada nos computadores do senac - > P@$$w0rd
+     */
+    public static String senha = "";
     
+    /**
+     * Método para salvar objetos do tipo produto no banco de dados
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
     public static boolean salvar(Produto obj) throws SQLException{
         Connection conexao = null;
         boolean retorno = false;
@@ -49,6 +67,12 @@ public class ProdutoDAO {
         return retorno;
     }
     
+    /**
+     * Método para listar objetos do tipo produto do banco de dados
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<Produto> listar(Produto obj) throws SQLException{
         Connection conexao = null;
         ArrayList<Produto> lista = new ArrayList<Produto>();
@@ -83,6 +107,12 @@ public class ProdutoDAO {
         return lista;
     }
     
+    /**
+     * Método para listar uma seleção de objetos do tipo produto do banco de dados exceto o fornecedor
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<Produto> listarSelecao(Produto obj) throws SQLException{
         Connection conexao = null;
         ArrayList<Produto> lista = new ArrayList<Produto>();
@@ -116,12 +146,12 @@ public class ProdutoDAO {
         }
         return lista;
     }
-    
-    public static Produto consultar(int produto){
-        Produto lista = new Produto();
-        return lista;
-    }
-    
+        
+    /**
+     * Método para atualizar objeto produto no banco de dados
+     * @param obj
+     * @return
+     */
     public static boolean atualizar(Produto obj){
         Connection conexao = null;
         boolean retorno = false;
@@ -149,24 +179,24 @@ public class ProdutoDAO {
         return retorno;
     }
     
+    /**
+     * Método para excluir cliente no banco de dados
+     * @param id
+     * @return
+     */
     public static boolean excluir(int id){
     
         Connection conexao = null;
         boolean retorno = false;
         
         try {
-            
-            //TODO: Implementar insert na tabela NotaFiscal
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            //Abrir a conexão
             conexao = DriverManager.getConnection(url,login,senha);
             
-            //Criar o comando sql
             PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM Produto WHERE cod_produto=?");
             comandoSQL.setInt(1,id);            
             
-            //Executar o comando
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
                retorno = true;
@@ -177,9 +207,6 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
         return retorno;
-    
-    }
-        
+    }      
 }

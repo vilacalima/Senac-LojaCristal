@@ -3,25 +3,25 @@ create database LojaCristal;
 use LojaCristal;
 create table Cliente(
 	cod_cliente int primary key auto_increment,
-    nome varchar(40),
+    nome varchar(40) not null,
     cpf varchar(11) unique not null,
-    dataNasc date,
-    sexo int,
-    statusCivil int,
-    email varchar(40),
-    celular varchar(13),
-    endereco varchar(40),
-    cep int,
-    nro_casa varchar(10)
+    dataNasc date not null,
+    sexo int not null,
+    statusCivil int not null,
+    email varchar(40) not null,
+    celular varchar(13) not null,
+    endereco varchar(40) not null,
+    cep int not null,
+    nro_casa varchar(10) not null
 );
 create table Produto(
 	cod_produto int primary key auto_increment,
-    descricao varchar(25),
-    cor varchar(10),
-    tamanho int,
-    valor decimal,
-    quantidade int,
-    fornecedor varchar(15)    
+    descricao varchar(25) not null,
+    cor varchar(10) not null,
+    tamanho int not null,
+    valor decimal not null,
+    quantidade int not null,
+    fornecedor varchar(15) not null    
 );
 
 create table Venda(
@@ -44,33 +44,17 @@ create table itemVenda(
     foreign key(cod_Venda) references Venda(cod_Venda)
 );
 
-select nome, cod_cliente from cliente where cpf='11111111111';
-
-select*from Venda;
-desc produto;
+#Insert na tabela Cliente
 insert into cliente (nome, cpf, email, celular, endereco, dataNasc, nro_casa, cep, sexo, statusCivil)
-			values('teste1', '11111111111', 'teste1@teste', '11911111111', 'teste1 teste', '2001-01-01',1,01111111,1,1),
-				('teste2', '22222222222', 'teste2@teste', '11922222222', 'teste2 teste', '2001-01-01',2,0222222,2,2),
-                ('teste3', '33333333333', 'teste3@teste', '11933333333', 'teste3 teste', '2001-01-01',3,03333333,3,3);
+			values('MICHAEL RICHARD KYLE', '85232809016', 'michaelkyle@senacsp.edu.br', '11911111111', 'Rua Estados Unidos', '1975-01-25',2,1427000,2,2),
+				('SELENA GOMEZ', '68096015036', 'selenagomes@senacsp.edu.br', '11922222222', 'Rua Martins Fontes', '2000-07-20',1,01050000,1,1),
+                ('LUCAS RANGEL', '90747263051', 'lucas@senacsp.edu.br', '11933333333', 'Rua Maravilha', '1995-10-13',73,02169090,3,3),
+                ('ANA HICKMANN', '66327060021', 'hickmann@senacsp.edu.br', '11926353625', 'Rua Alcindo Guanabara', '1985-03-25',45,01111111,1,2),
+				('GUSTAVO LIMA', '10234813083', 'g.lima@senacsp.edu.br', '11956322468', 'Rua Augusto Severo', '1989-10-14',43,01025010,1,1);
 
+#Insert na tabela Produto
 insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
-			values('branco', 'tenis', 'adidas', 10, 35, 100),
-            ('preto', 'sapatenis', 'nike', 15, 32, 500),
-            ('rosa', 'tenis', 'olimpcos', 20, 33, 600);
-
-select 	cod_produto, descricao, cor, tamanho, valor from Produto where descricao='tenis';
-select * from venda;
-select * from cliente;
-
-
-#select para sintetico
-select dataVenda, Cliente.nome, valorTotal from Venda 
-		inner join Cliente on Venda.cod_Cliente = Cliente.cod_Cliente where dataVenda>='2022-11-19' and dataVenda<='2022-11-19';
-
-#select para analitico
-select cod_Produto, quantidadeProduto,valorUnitProduto from itemVenda where cod_Venda='3';
-
-select Produto.descricao, quantidadeProduto,valorUnitProduto from itemVenda inner join Produto on itemVenda.cod_Produto = Produto.cod_produto where cod_Venda='4';
-
-update produto set quantidade = quantidade - 5 where cod_Produto=1;
+				values('branco', 'tenis', 'adidas', 10, 35, 100),
+					('preto', 'sapatenis', 'nike', 15, 32, 500),
+					('rosa', 'tenis', 'olimpcos', 20, 33, 600);
 

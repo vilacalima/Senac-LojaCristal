@@ -17,15 +17,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe para implementar no banco de dados do objetos do tipo relatório
  * @author robson.vlima3
  */
 public class RelatorioDAO {
     
+    /**
+     * Url para consulta no banco de dados
+     */
     public static String url = "jdbc:mysql://localhost:3306/lojacristal";
+
+    /**
+     * Login para acesso ao banco de dados
+     */
     public static String login = "root";
-    public static String senha = ""; //P@$$w0rd
+
+    /**
+     * Senha para acesso ao banco de dados Senha usada nos computadores do senac - > P@$$w0rd
+     */
+    public static String senha = "";
     
+    /**
+     * Método para listar o relatório Sintético do banco de dados
+     * @param obj
+     * @return
+     */
     public static ArrayList<Relatorio> listarSintetico(Relatorio obj){
         Connection conexao;
         ArrayList<Relatorio> listaRelatorio = new ArrayList<Relatorio>();
@@ -58,6 +74,11 @@ public class RelatorioDAO {
         return listaRelatorio;
     }
     
+    /**
+     * Método para listar o relatório Analitico e atualizar a quantidade do produto no banco de dados
+     * @param obj
+     * @return
+     */
     public static ArrayList<Relatorio> listarAnalitico(Relatorio obj){
         Connection conexao;
         ArrayList<Relatorio> listaRelatorio = new ArrayList<Relatorio>();

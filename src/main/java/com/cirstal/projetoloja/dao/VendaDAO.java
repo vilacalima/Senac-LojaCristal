@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Classe para implementar no banco de dados do objetos do tipo Venda
  * @author robso
  */
 public class VendaDAO {
@@ -23,6 +23,11 @@ public class VendaDAO {
     static String Login = "root";
     static String Senha = ""; //P@$$w0rd
     
+    /**
+     * Método para salvar objetos do tipo venda no banco de dados
+     * @param obj
+     * @return
+     */
     public static boolean salvar(Venda obj) {
         boolean retorno = false;
         
@@ -65,8 +70,6 @@ public class VendaDAO {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
-        
-        return retorno;
-        
+        return retorno;  
     }
 }

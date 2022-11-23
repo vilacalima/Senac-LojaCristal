@@ -12,11 +12,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- *
+ * Classe de validadores
  * @author robso
  */
 public class Validador {
 
+    /**
+     * Método para validar se o campo retorna somente números
+     * @param evt
+     * @param campo
+     */
     public void validaMonetarioTxtBox(java.awt.event.KeyEvent evt, String campo) {
         char c = evt.getKeyChar();
 
@@ -27,6 +32,12 @@ public class Validador {
         
     }
     
+    /**
+     * Método para validadr se o número de  caracteres foi atingido
+     * @param evt
+     * @param texto
+     * @param numero
+     */
     public void validaPalavra(java.awt.event.KeyEvent evt, JTextField texto, int numero){
         if(texto.getText().length()>=numero)
         {
@@ -35,24 +46,48 @@ public class Validador {
         }
     }
     
+    /**
+     * Método para validar se o JtextField foi digitado
+     * @param evt
+     * @param txt
+     * @param texto
+     */
     public void validaEntradaPalavra(java.awt.event.ActionEvent evt, JTextField txt, String texto){
         if(txt.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
     
+    /**
+     * Método para validar se a estring foi digitada
+     * @param evt
+     * @param txt
+     * @param texto
+     */
     public void validaEntradaTexto(java.awt.event.ActionEvent evt, String txt, String texto){
         if(txt.equals("")){
             JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
     
+    /**
+     * Método para validar se o comboBox retorna numero igual a 0
+     * @param evt
+     * @param txt
+     * @param texto
+     */
     public void validaEntradaNumero(java.awt.event.ActionEvent evt, JComboBox txt, String texto){
         if(txt.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Digite " + texto);
         }
     }
     
+    /**
+     * Método para validar se a data é null
+     * @param evt
+     * @param data
+     * @param texto
+     */
     public void validaData(java.awt.event.ActionEvent evt, JDateChooser data, String texto){
         if(data.getDate() == null){
             JOptionPane.showMessageDialog(null, "Digite " + texto);
