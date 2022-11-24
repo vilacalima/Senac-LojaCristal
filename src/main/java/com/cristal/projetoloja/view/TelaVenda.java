@@ -476,6 +476,7 @@ public class TelaVenda extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linhaSelecionada = tblEstoque.getSelectedRow();
+        if(linhaSelecionada >0)
         ((DefaultTableModel) tblProdutos.getModel()).removeRow(linhaSelecionada);
         
     }//GEN-LAST:event_btnExcluirActionPerformed
@@ -530,7 +531,9 @@ public class TelaVenda extends javax.swing.JFrame {
         objVenda.setDataVenda(dataVenda);
         objVenda.setTipoPagamento(tipoPagamento);
         
-        boolean retorno = VendaDAO.salvar(objVenda);
+        boolean retorno = false;
+        if(codVendedor !=0 && tipoPagamento !=0)
+        retorno = VendaDAO.salvar(objVenda);
         
         if (retorno){
             TelaFinalizacao finalizaVenda = new TelaFinalizacao();
@@ -569,7 +572,7 @@ public class TelaVenda extends javax.swing.JFrame {
         validador.validaEntradaPalavra(evt, txtDescricao, "a descrição do produto");
         
         try{
-            String procurarDescricao = txtDescricao.getText();
+            String procurarDescricao = "%" + txtDescricao.getText() + "%";
             Produto objProduto = new Produto(procurarDescricao);
 
             ArrayList<Produto> lista = ProdutoDAO.listarSelecao(objProduto);

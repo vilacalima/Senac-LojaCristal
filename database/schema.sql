@@ -1,6 +1,7 @@
 create database LojaCristal;
 
 use LojaCristal;
+
 create table Cliente(
 	cod_cliente int primary key auto_increment,
     nome varchar(40) not null,
@@ -19,14 +20,14 @@ create table Produto(
     descricao varchar(25) not null,
     cor varchar(10) not null,
     tamanho int not null,
-    valor decimal not null,
+    valor double not null,
     quantidade int not null,
     fornecedor varchar(15) not null    
 );
 
 create table Venda(
 	cod_Venda int primary key auto_increment,
-    valorTotal decimal not null,
+    valorTotal double not null,
     dataVenda date not null,
     cod_Cliente int not null,
     cod_Vendedor int not null,
@@ -39,7 +40,7 @@ create table itemVenda(
     cod_Venda int not null,
     cod_Produto int not null,
     quantidadeProduto int not null,
-    valorUnitProduto decimal not null,
+    valorUnitProduto double not null,
     foreign key(cod_Produto) references Produto(Cod_Produto),
     foreign key(cod_Venda) references Venda(cod_Venda)
 );
@@ -54,7 +55,36 @@ insert into cliente (nome, cpf, email, celular, endereco, dataNasc, nro_casa, ce
 
 #Insert na tabela Produto
 insert into produto  (cor, descricao, fornecedor, quantidade, tamanho, valor)
-				values('branco', 'tenis', 'adidas', 10, 35, 100),
-					('preto', 'sapatenis', 'nike', 15, 32, 500),
-					('rosa', 'tenis', 'olimpcos', 20, 33, 600);
+				values('Preto', 'Sapatilha Com Nó', 'GiGiL', 10, 35, 150),
+					('Branco', 'Sapatilha', 'Modare', 15, 34, 130),
+					('Verniz', 'Sandália Salto Grosso', 'Di Scarp', 20, 33, 199),
+                    ('Branco', 'Sandália Salto Grosso Boneca Dina', 'Mirtz', 10, 35, 200),
+					('Vermelho', 'Tênis Breaknet Floral', 'Adidas', 15, 36, 350),
+					('Rosa', 'Tênis Runfalcon', 'Adidas', 20, 33, 365),
+                    ('Branco', 'Tênis Grand Court Alpha', 'Adidas', 10, 35, 190),
+					('Preto', 'Tênis Revolution', 'Nike', 15, 38, 160);
 
+select *from produto;
+#Insert na tabela Venda
+insert into Venda(valorTotal, dataVenda, cod_Cliente, cod_Vendedor, tipoPagamento)
+			value(529,'2022-11-20', 1, 3, 1),
+				(280,'2022-11-21', 2, 2, 2),
+				(914,'2022-11-22', 3, 1, 1),
+				(830,'2022-11-22', 4, 4, 2),
+				(150,'2022-11-23', 5, 1, 2);
+#Insert na tabela ItemVenda
+insert into itemVenda(cod_Venda, cod_Produto, quantidadeProduto, valorUnitProduto)
+			value(1,2,2,130),
+				(1,3,1,199),
+				(1,4,1,200),
+				(2,1,2,150),
+                (2,2,3,130),
+				(3,3,4,199),
+                (3,5,1,350),
+                (3,6,2,365),
+				(4,2,1,130),
+                (4,1,2,150),
+                (4,4,2,200),
+                (4,5,1,350),
+				(5,1,2,150);
+				

@@ -44,7 +44,6 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
@@ -85,14 +84,6 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/X.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -170,8 +161,6 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(19, 19, 19))))
         );
@@ -190,8 +179,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -250,7 +238,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         validador.validaEntradaPalavra(evt, txtPesquisar, "o código do produto");
         
         try{
-            String procurarDescricao = txtPesquisar.getText();
+            String procurarDescricao = "%" + txtPesquisar.getText() + "%";
             objProduto = new Produto(procurarDescricao);
             
              ArrayList<Produto> lista = ProdutoDAO.listar(objProduto);
@@ -274,10 +262,6 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtPesquisar.setText("");     
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linhaSelecionada = tblEstoque.getSelectedRow();
         int id = Integer.parseInt(tblEstoque.getValueAt(linhaSelecionada, 0).toString());
@@ -286,7 +270,7 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
         if(retorno){
             JOptionPane.showMessageDialog(this, "Produto excluído com sucesso!");
         }else{
-            JOptionPane.showMessageDialog(this, "Falha na exclusão!");
+            JOptionPane.showMessageDialog(this, "Falha na exclusão, o produto não pode ser excluído!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -328,7 +312,6 @@ public class TelaConsultaProduto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPesquisar;

@@ -82,7 +82,7 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
 
             PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT * FROM produto where descricao=?");
+            conexao.prepareStatement("SELECT * FROM produto WHERE descricao LIKE ?");
             comandoSQL.setString(1, obj.getDescricao());
             
             ResultSet rs = comandoSQL.executeQuery();
@@ -122,7 +122,7 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
 
             PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT * FROM produto where descricao=?");
+            conexao.prepareStatement("SELECT * FROM produto where descricao LIKE ?");
             comandoSQL.setString(1, obj.getDescricao());
             //cod_produto, descricao, cor, tamanho, valor
             ResultSet rs = comandoSQL.executeQuery();
